@@ -9,10 +9,25 @@ using System.Windows.Forms;
 
 namespace FoodManager
 {
+    /// <summary>
+    /// A helper class for csv file handling specific for menu entries.
+    /// </summary>
     static class MenuCsvHelper
     {
+        /// <summary>
+        /// Debug mode for message boxes showing file progress.
+        /// </summary>
         public static bool DebugMode { get; set; } = false;
 
+        /// <summary>
+        /// Loads a csv file.
+        /// </summary>
+        /// <param name="fname"></param>
+        /// <param name="rdir"></param>
+        /// <param name="workingDate"></param>
+        /// <param name="dataGridView"></param>
+        /// <param name="newFileCreated"></param>
+        /// <returns></returns>
         public static bool LoadCsvFile(string fname, string rdir, DateTime workingDate, DataGridView dataGridView, ref bool newFileCreated)
         {
             // check if file exists
@@ -69,6 +84,13 @@ namespace FoodManager
             return false;
         }
 
+        /// <summary>
+        /// Saves a list of menu entries to a csv file in given directory.
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="fname"></param>
+        /// <param name="rdir"></param>
+        /// <returns></returns>
         public static bool SaveCsvFile(List<DayMenu> source, string fname, string rdir)
         {
             try
@@ -90,6 +112,13 @@ namespace FoodManager
             return false;
         }
 
+        /// <summary>
+        /// Saves a list of menu entries to a csv file.
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="fname"></param>
+        /// <param name="rdir"></param>
+        /// <returns></returns>
         public static bool SaveCsvFile(List<DayMenu> source, string path)
         {
             if (path.Substring(path.LastIndexOf("."), 4) == ".csv")

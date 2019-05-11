@@ -10,10 +10,21 @@ using System.Windows.Forms;
 
 namespace FoodManager
 {
+    /// <summary>
+    /// A class defining a window showing generated reports.
+    /// </summary>
     public partial class MenuReport : Form
     {
+        /// <summary>
+        /// A list of menu entries.
+        /// </summary>
         private List<DayMenu> DayMenus { get; set; }
 
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="dayMenu"></param>
+        /// <param name="numberOfDays"></param>
         public MenuReport(List<DayMenu> dayMenu, int numberOfDays)
         {
             InitializeComponent();
@@ -29,14 +40,27 @@ namespace FoodManager
             dataGridViewMenuReport.Refresh();
         }
 
-        // as default, 10 next days are assumed
+        /// <summary>
+        /// Constructor. If no days were provided, the default will be 10.
+        /// </summary>
+        /// <param name="dayMenu"></param>
         public MenuReport(List<DayMenu> dayMenu) : this(dayMenu, 10) { }
 
+        /// <summary>
+        /// Close the view.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonOk_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        /// <summary>
+        /// Generate a report and save it to a csv file.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonGenerateReport_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
